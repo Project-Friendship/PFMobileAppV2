@@ -5,7 +5,8 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-localization"
     ],
     "name": "ProjectFriendshipApp",
     "slug": "ProjectFriendshipApp"
