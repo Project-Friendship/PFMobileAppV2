@@ -8,10 +8,10 @@ In a terminal / command line prompt navigate to your source code folder.
 
 ## Get the code: (Git clone)
 Copy paste / run the following command:
-`git clone git@github.com:Project-Friendship/PFMobileAppApiV2.git`
+`git clone git@github.com:Project-Friendship/PFMobileAppV2.git`
 
-This will create a new folder of `PFMobileAppApiV2`
-Move your current working direction to the new folder with `cd PFMobileAppApiV2`
+This will create a new folder of `PFMobileAppV2`
+Move your current working direction to the new folder with `cd PFMobileAppV2`
 
 ## Install the application
 All the code is present but the dependencies to run the program aren't present. 
