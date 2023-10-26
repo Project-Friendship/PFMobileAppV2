@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   contextText: {
     fontSize: SIZES.medium - 2,
     color: COLORS.gray,
-    fontFamily: FONT.regular,
+    fontFamily: FONT.light,
     marginVertical: SIZES.small / 1.25,
   },
 });

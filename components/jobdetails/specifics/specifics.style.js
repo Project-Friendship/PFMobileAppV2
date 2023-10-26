@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   pointText: {
     fontSize: SIZES.medium - 2,
     color: COLORS.gray,
-    fontFamily: FONT.regular,
+    fontFamily: FONT.light,
     marginLeft: SIZES.small,
   },
 });
