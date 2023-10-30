@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     },
     noOfSearchedJobs: {
         marginTop: 2,
-        fontFamily: FONT.medium,
+        fontFamily: FONT.regular,
         fontSize: SIZES.small,
         color: COLORS.primary,
     },

@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   companyName: {
     fontSize: SIZES.medium - 2,
     color: COLORS.primary,
-    fontFamily: FONT.medium,
+    fontFamily: FONT.regular,
   },
   locationBox: {
     flexDirection: "row",
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   locationName: {
     fontSize: SIZES.medium - 2,
     color: COLORS.gray,
-    fontFamily: FONT.regular,
+    fontFamily: FONT.light,
     marginLeft: 2,
   },
 });
