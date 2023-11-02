@@ -3,7 +3,7 @@ import { View, ScrollView, SafeAreaView } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 
 import { COLORS, icons, images, SIZES } from '../../enum';
-import ForgotPas from '../../components/auth/forgotpassword/ForgotPass';
+import ForgotScreen from '../../components/auth/forgotpassword/ForgotPass1';
 import useFetch from '../../hook/useFetch';
 import  en  from '../../enum/lang/en'
 import leet from '../../enum/lang/leet';
@@ -27,7 +27,7 @@ const Home = () => {
 				}} />
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<View style={{ flex: 1, padding: SIZES.medium }} >
-					<ForgotPass i18n={i18n}></ForgotPass>
+					<ForgotScreen i18n={i18n}></ForgotScreen>
 				</View>
 			</ScrollView>
 		</SafeAreaView>

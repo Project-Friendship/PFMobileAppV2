@@ -17,7 +17,7 @@ import axios from 'axios';
 import { API_BASE } from '@env';
 
 
-const LoginScreen = ({i18n}) => {
+const ForgotScreen = ({i18n}) => {
 	const [username, onUsernameChange] = useState('');
 	const [password, onPasswordChange] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
@@ -123,4 +123,4 @@ const LoginScreen = ({i18n}) => {
 		</View>
 	);
 }
-module.exports = ForgotPass;
+module.exports = ForgotScreen;
