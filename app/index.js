@@ -27,7 +27,7 @@ const Home = () => {
 				}} />
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<View style={{ flex: 1, padding: SIZES.medium }} >
-					<ForgotPass i18n={i18n}></ForgotPass>
+					<LoginScreen i18n={i18n}></LoginScreen>
 				</View>
 			</ScrollView>
 		</SafeAreaView>

@@ -18,17 +18,11 @@ import { API_BASE } from '@env';
 
 
 const ForgotScreen = ({i18n}) => {
-	const [username, onUsernameChange] = useState('');
-	const [password, onPasswordChange] = useState('');
+    const [email, onEmailChange] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
 
-	const holder = {
-		secondTextInput: {
-			focus: () => { }
-		}
-	}
 	const onSubmitHandler = async (event) => {
 		if (false) {//invalid data die
 
@@ -36,7 +30,7 @@ const ForgotScreen = ({i18n}) => {
 		setIsLoading(true);
 		setIsError(false);
 		try {
-			const response = await axios.post(`${API_BASE}/authenticate/login`, { userName: username, password })
+			const response = await axios.post(`${API_BASE}/authenticate/login`, {email})
 		} catch (error) {
 
 			setErrorMessage(i18n.t(error.response.data.messageCode.toString()));
@@ -61,36 +55,25 @@ const ForgotScreen = ({i18n}) => {
 					<TextInput
 						style={styles.input}
 						onChangeText={(event)=>{
-							onUsernameChange(event)
+							onEmailChange(event)
 							setIsError(false)
 						}}
 						onSubmitEditing={() => { holder.secondTextInput.focus(); }}
-						value={username}
+						value={email}
+                        inputmode = 'email'
 					>
 					</TextInput>
 				</View>
 				<View>
-					<Text style={styles.intputLabel}>{i18n.t('passwordLabel')}</Text>
-					<TextInput
-						ref={(input) => { holder.secondTextInput = input; }}
-						secureTextEntry={true}
-						style={styles.input}
-						onChangeText={(event)=>{
-							onPasswordChange(event)
-							setIsError(false)
-						}}
-						onSubmitEditing={onSubmitHandler}
-						value={password}
-					></TextInput>
 					<Pressable
-						title="Login"
+						title={i18n.t('forgotPasswordActionPrompt')}
 						onPress={onSubmitHandler}
 						disabled={isLoading}
 						style={styles.button}
 						required={true}
 					>
 						<Text style={styles.buttonLabel}>
-							{i18n.t('loginLabel')} {(isLoading) && <ActivityIndicator 
+							{i18n.t('forgotPasswordActionPrompt')} {(isLoading) && <ActivityIndicator 
 								style={{
 									position: 'absolute',
 									right: '-20px',
