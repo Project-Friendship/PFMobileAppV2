@@ -51,7 +51,7 @@ const ForgotScreen = ({i18n}) => {
 			<Text></Text>
 			<View style={styles.formContainer} class="formContainer">
 				<View>
-					<Text style={styles.intputLabel}>{i18n.t('usernameLabel')}</Text>
+					<Text style={styles.intputLabel}>{i18n.t('ForgotPasswordPrompt')}</Text>
 					<TextInput
 						style={styles.input}
 						onChangeText={(event)=>{
@@ -86,20 +86,6 @@ const ForgotScreen = ({i18n}) => {
 
 						</Text>
 					</Pressable>
-				</View>
-				<View stlye={styles.actionLinks}>
-					<Text style={styles.errorMessage}>
-						{isError ? errorMessage : " "}
-					</Text>
-
-					<Text style={{
-						display: "flex",
-						flexDirection: 'column',
-						alignContent: 'center'
-					}}>
-						<Text><Link href="/register">{i18n.t('signUpPrompt')}</Link></Text>
-						<Link href="/forgot">{i18n.t('forgotPasswordPrompt')}</Link>
-					</Text>
 				</View>
 			</View>
 			<StatusBar style="auto" />
