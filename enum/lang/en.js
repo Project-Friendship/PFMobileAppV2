@@ -4,7 +4,7 @@ module.exports = {
 	loginLabel: "Login",
     emailLabel: "Email",
 	signUpPrompt: "Don't have an account? Sign-up",
-	forgotPasswordPrompt: "Forgot your password?",
+	forgotPasswordPrompt: "Email Reset Link",
     forgotPasswordActionPrompt: "Send",
 
 

@@ -51,7 +51,7 @@ const ForgotScreen = ({i18n}) => {
 			<Text></Text>
 			<View style={styles.formContainer} class="formContainer">
 				<View>
-					<Text style={styles.intputLabel}>{i18n.t('ForgotPasswordPrompt')}</Text>
+					<Text style={styles.intputLabel}>{i18n.t('forgotPasswordPrompt')}</Text>
 					<TextInput
 						style={styles.input}
 						onChangeText={(event)=>{
