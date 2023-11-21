@@ -10,7 +10,8 @@ import {
 } from 'react-native'
 
 import { COLORS, IMAGES } from '../../../enum'
-import lang from '../../../enum/lang/en'
+import inputBoxStyles from '../../form/inputBoxes.style';
+import InputBox from '../../form/InputBox';
 import styles from './loginScreen.style'
 import { Link } from 'expo-router';
 import axios from 'axios';
@@ -20,10 +21,9 @@ import { API_BASE } from '@env';
 const LoginScreen = ({i18n}) => {
 	const [username, onUsernameChange] = useState('');
 	const [password, onPasswordChange] = useState('');
-	const [errorMessage, setErrorMessage] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
-
+	const [errorMessage, setErrorMessage] = useState('');
 	const holder = {
 		secondTextInput: {
 			focus: () => { }
@@ -35,11 +35,11 @@ const LoginScreen = ({i18n}) => {
 		}
 		setIsLoading(true);
 		setIsError(false);
-		try {
-			const response = await axios.post(`${API_BASE}/authenticate/login`, { userName: username, password })
-		} catch (error) {
 
-			setErrorMessage(i18n.t(error.response.data.messageCode.toString()));
+		try {
+			const response = await axios.post(`${API_BASE}/authenticate/login`, { userName: username, password: password })
+		} catch (error) {
+			setErrorMessage(i18n.t('loginFailed'));
 			setIsLoading(false);
 			setIsError(true);
 		} finally {
@@ -47,49 +47,49 @@ const LoginScreen = ({i18n}) => {
 		}
 	}
 
-
-
 	return (
 		<View style={styles.container}>
 			<View style={styles.logoContainer}>
 				<Image source={IMAGES.logoWithName} />
 			</View>
 			<Text></Text>
-			<View style={styles.formContainer} class="formContainer">
+			<View style={inputBoxStyles.formContainer} class="formContainer">
+				
+				<Text style={inputBoxStyles.formHeader}>{i18n.t('loginLabel')}</Text>
+				<InputBox
+					labelText={i18n.t('usernameLabel')}
+					isPassword={false}
+					onChangeText={(event)=>{
+						onUsernameChange(event)
+						setIsError(false)
+					}}
+					onSubmitEditing={() => { holder.secondTextInput.focus(); }}
+					inputValue={username}
+				/>
+				<InputBox
+					labelText={i18n.t('passwordLabel')}
+					isPassword={true}
+					onChangeText={(event)=>{
+						onPasswordChange(event)
+						setIsError(false)
+					}}
+					onSubmitEditing={onSubmitHandler}
+					inputValue={password}
+				/>
 				<View>
-					<Text style={styles.intputLabel}>{i18n.t('usernameLabel')}</Text>
-					<TextInput
-						style={styles.input}
-						onChangeText={(event)=>{
-							onUsernameChange(event)
-							setIsError(false)
-						}}
-						onSubmitEditing={() => { holder.secondTextInput.focus(); }}
-						value={username}
-					>
-					</TextInput>
+					<Text style={styles.errorMessage}>
+						{isError ? errorMessage : " "}
+					</Text>
 				</View>
 				<View>
-					<Text style={styles.intputLabel}>{i18n.t('passwordLabel')}</Text>
-					<TextInput
-						ref={(input) => { holder.secondTextInput = input; }}
-						secureTextEntry={true}
-						style={styles.input}
-						onChangeText={(event)=>{
-							onPasswordChange(event)
-							setIsError(false)
-						}}
-						onSubmitEditing={onSubmitHandler}
-						value={password}
-					></TextInput>
 					<Pressable
 						title="Login"
 						onPress={onSubmitHandler}
 						disabled={isLoading}
-						style={styles.button}
+						style={inputBoxStyles.button}
 						required={true}
 					>
-						<Text style={styles.buttonLabel}>
+						<Text style={inputBoxStyles.buttonLabel}>
 							{i18n.t('loginLabel')} {(isLoading) && <ActivityIndicator 
 								style={{
 									position: 'absolute',
@@ -104,20 +104,10 @@ const LoginScreen = ({i18n}) => {
 						</Text>
 					</Pressable>
 				</View>
-				<View stlye={styles.actionLinks}>
-					<Text style={styles.errorMessage}>
-						{isError ? errorMessage : " "}
-					</Text>
-
-					<Text style={{
-						display: "flex",
-						flexDirection: 'column',
-						alignContent: 'center'
-					}}>
-						<Text><Link href="/register">{i18n.t('signUpPrompt')}</Link></Text>
-						<Link href="/forgot">{i18n.t('forgotPasswordPrompt')}</Link>
-					</Text>
-				</View>
+			</View>
+			<View stlye={styles.actionLinksContainer}>
+				<Text style={styles.actionLink}><Link href="/register">{i18n.t('signUpPrompt')}</Link></Text>
+				<Text style={styles.actionLink}><Link href="/reset">{i18n.t('forgotPasswordPrompt')}</Link></Text>
 			</View>
 			<StatusBar style="auto" />
 		</View>
