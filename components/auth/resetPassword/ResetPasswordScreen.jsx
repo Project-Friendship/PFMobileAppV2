@@ -13,7 +13,7 @@ import {
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { COLORS, IMAGES } from '../../../enum'
-import inputBoxStyles from '../../form/inputBoxes.style';
+import inputBoxStyles from '../../form/form.style';
 import InputBox from '../../form/InputBox';
 import styles from './resetPasswordScreen.style'
 import axios from 'axios';

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { View, Text, Pressable, TextInput} from 'react-native'
 
-import styles from './inputBoxes.style'
+import styles from './form.style'
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -24,7 +24,7 @@ const InputBox = (props) => {
 
     return (
         <View style={styles.inputElement}>
-            <Text style={styles.intputLabel}>{props.labelText || "Input Label"}</Text>
+            <Text style={styles.inputLabel}>{props.labelText || "Input Label"}</Text>
             <View style={styles.input}>
                 <TextInput
                     style={styles.inputBox}

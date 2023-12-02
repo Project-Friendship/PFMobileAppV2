@@ -36,16 +36,35 @@ const styles = StyleSheet.create({
 		letterSpacing: 0.25,
 		color: COLORS.lightWhite,
 	},
-	intputLabel: {
+	inputLabel: {
 		fontFamily: FONT.bold,
 		color: COLORS.gray,
 		fontSize: SIZES.medium,
 	},
+
+	checkboxLabel: {
+		fontFamily: FONT.bold,
+		color: COLORS.gray,
+		fontSize: SIZES.medium,
+		marginBottom: "0.5em"
+	},
+
 	input: {
 		width: '100%',
 		borderWidth: 1,
 		borderColor: COLORS.gray,
 		flexDirection: 'row',
+	},
+	select: {
+		width: '100%',
+		flexDirection: 'row',
+	},
+
+	picker: {
+		fontFamily: FONT.light,
+		fontSize: SIZES.medium,
+		width: "100%",
+		height: "50px",
 	},
 
 	inputBox: {
@@ -56,8 +75,37 @@ const styles = StyleSheet.create({
 		height: 50,
 	},
 
+	otherInputBox: {
+		fontFamily: FONT.light,
+		fontSize: SIZES.medium,
+		width: "100px",
+		minWidth: "100px",
+		paddingLeft: '5px',
+		marginLeft: '5px',
+		borderWidth: 1,
+    	borderColor: COLORS.gray,
+	},
+
 	inputElement: {
 		marginBottom: 25,
+	},
+
+	checkboxes: {
+		height: "2.7em",
+		display: 'flex',
+		flexWrap: 'wrap',
+		gap: "5px",
+	},
+
+	checkbox: {
+		display: 'flex',
+		flexDirection: 'row',
+	},
+
+	checkboxText: {
+		fontFamily: FONT.light,
+		fontSize: SIZES.medium,
+		marginLeft: "5px",
 	},
 
 	eyeButton: {
