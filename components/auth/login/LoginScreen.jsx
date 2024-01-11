@@ -106,7 +106,7 @@ const LoginScreen = ({i18n}) => {
 				</View>
 			</View>
 			<View stlye={styles.actionLinksContainer}>
-				<Text style={styles.actionLink}><Link href="/register">{i18n.t('signUpPrompt')}</Link></Text>
+				<Text style={styles.actionLink}><Link href="/forgot">{i18n.t('signUpPrompt')}</Link></Text>
 				<Text style={styles.actionLink}><Link href="/reset">{i18n.t('forgotPasswordPrompt')}</Link></Text>
 			</View>
 			<StatusBar style="auto" />

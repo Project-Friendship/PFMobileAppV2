@@ -11,6 +11,7 @@ import {
 
 import { COLORS, IMAGES } from '../../../enum'
 import lang from '../../../enum/lang/en'
+import InputBox from '../../form/InputBox'
 import styles from './forgotPass.style'
 import { Link } from 'expo-router';
 import axios from 'axios';
@@ -19,6 +20,7 @@ import { API_BASE } from '@env';
 
 const ForgotScreen = ({i18n}) => {
     const [email, onEmailChange] = useState('');
+    const [sentMessage, setSentMessage] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
@@ -30,14 +32,14 @@ const ForgotScreen = ({i18n}) => {
 		setIsLoading(true);
 		setIsError(false);
 		try {
-			const response = await axios.post(`${API_BASE}/authenticate/login`, {email})
+//			const response = await axios.post(`${API_BASE}/authorize/reset`, {email})
 		} catch (error) {
-
 			setErrorMessage(i18n.t(error.response.data.messageCode.toString()));
 			setIsLoading(false);
 			setIsError(true);
 		} finally {
 			setIsLoading(false);
+            setSentMessage(true);
 		}
 	}
 
@@ -48,21 +50,17 @@ const ForgotScreen = ({i18n}) => {
 			<View style={styles.logoContainer}>
 				<Image source={IMAGES.logoWithName} />
 			</View>
-			<Text></Text>
-			<View style={styles.formContainer} class="formContainer">
+
+			{!sentMessage && <View style={styles.formContainer} class="formContainer">
 				<View>
-					<Text style={styles.intputLabel}>{i18n.t('forgotPasswordPrompt')}</Text>
-					<TextInput
-						style={styles.input}
-						onChangeText={(event)=>{
-							onEmailChange(event)
-							setIsError(false)
-						}}
-						onSubmitEditing={() => { holder.secondTextInput.focus(); }}
-						value={email}
-                        inputmode = 'email'
-					>
-					</TextInput>
+				    <InputBox
+				    	labelText={i18n.t('sendEmailPrompt')}
+					    isPassword={false}
+    					onChangeText={(event)=>{
+	    					onEmailChange(event)
+		    				setIsError(false)
+			    		}}
+    				/>
 				</View>
 				<View>
 					<Pressable
@@ -87,7 +85,17 @@ const ForgotScreen = ({i18n}) => {
 						</Text>
 					</Pressable>
 				</View>
-			</View>
+			</View>}
+			{sentMessage && <View>
+				<Text>
+					<p style={{textAlign: 'center', maxWidth: '400px'}}>
+						{i18n.t('sentEmailPrompt', {email})}
+						<span className='link-like' style={{color:'blue'}} onClick={()=> {onEmailChange('');setSentMessage(false)}}>
+							{i18n.t('tryAgainButtonPrompt')}
+						</span>
+					</p>
+				</Text>
+			</View>}
 			<StatusBar style="auto" />
 		</View>
 	);
