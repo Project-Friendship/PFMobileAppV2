@@ -9,6 +9,7 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
+*.swp
 web-build/
 
 # macOS
