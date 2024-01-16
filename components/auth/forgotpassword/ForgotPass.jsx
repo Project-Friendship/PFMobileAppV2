@@ -90,9 +90,11 @@ const ForgotScreen = ({i18n}) => {
 				<Text>
 					<p style={{textAlign: 'center', maxWidth: '400px'}}>
 						{i18n.t('sentEmailPrompt', {email})}
-						<span className='link-like' style={{color:'blue'}} onClick={()=> {onEmailChange('');setSentMessage(false)}}>
+						{/*<span className='link-like' style={{color:'blue'}} onClick={()=> {onEmailChange('');setSentMessage(false)}}>*/}
+						<a href = "/forgot">
 							{i18n.t('tryAgainButtonPrompt')}
-						</span>
+						</a>
+						{/*</span>*/}
 					</p>
 				</Text>
 			</View>}
